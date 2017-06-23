@@ -2,8 +2,7 @@
 const App = {
   rootElement: '#app',
   selectedColor: 'white',
-  numRows: 10,
-  numCols: 10,
+  resetColor: 'white',
   cellWidth: 25,
   cellHeight: 25,
   grid: [],
@@ -14,11 +13,11 @@ const App = {
     this.render();
   },
   makeGrid: function(){
-    this.grid = new Array(this.numRows);
-    for (let rowIndex = 0; rowIndex < this.numRows; rowIndex += 1) {
-      this.grid[rowIndex] = new Array(this.numCols);
-      for (let colIndex = 0; colIndex < this.numCols; colIndex += 1) {
-        this.grid[rowIndex][colIndex] = new Cell(this.cellWidth, this.cellHeight, this.selectedColor);
+    this.grid = new Array(this.rowsInput.value);
+    for (let rowIndex = 0; rowIndex < this.rowsInput.value; rowIndex += 1) {
+      this.grid[rowIndex] = new Array(this.colsInput.value);
+      for (let colIndex = 0; colIndex < this.colsInput.value; colIndex += 1) {
+        this.grid[rowIndex][colIndex] = new Cell(this.cellWidth, this.cellHeight, this.resetColor);
       }
     }
   },
@@ -26,19 +25,34 @@ const App = {
     this.root = document.querySelector(this.rootElement);
     this.colorPicker = this.root.querySelector('.color-picker');
     this.gridOutput = this.root.querySelector('.grid-output');
+    this.gridOptions = this.root.querySelector('.grid-options');
+    this.rowsInput = this.root.querySelector('.rows-input');
+    this.colsInput = this.root.querySelector('.cols-input');
   },
   bindEvents: function(){
       this.colorPicker.addEventListener('input', () => this.setColor(this.colorPicker.value));
+      this.gridOptions.addEventListener('submit', (event) => {
+        this.confirmGrid(event);
+      });
   },
+  confirmGrid: function(){
+    event.preventDefault();
+    this.makeGrid();
+    this.render();
+  },
+  // FOR COLOR PICKER ---------------------->
   setColor: function(newColor){
     this.selectedColor = newColor;
     console.log(this);
   },
+  // ------------------------------------------->
+  // FOR CELLS -------------------------->
   changeColor: function(rowIndex, colIndex){
     const cell = this.grid[rowIndex][colIndex];
     cell.color = this.selectedColor;
     this.render();
   },
+  // ----------------------------------------->
   resetGrid: function(){
     this.selectedColor = 'white';
     this.makeGrid();
@@ -46,12 +60,13 @@ const App = {
   },
   render: function(){
     this.gridOutput.innerHTML = '';
-    //RESET button
+    //RESET button ------------------------------------->
     const resetButton = document.createElement('button');
     resetButton.textContent = 'RESET';
     resetButton.addEventListener('click', () => this.resetGrid());
     this.gridOutput.appendChild(resetButton);
-    //GRID
+    // ------------------------------------------------>
+    //GRID ------------------------------------------>
     this.grid.forEach((row, rowIndex) => {
       const rowContainer = document.createElement('div');
       rowContainer.style.height = `${this.cellHeight}px`;
@@ -62,6 +77,7 @@ const App = {
       });
       this.gridOutput.appendChild(rowContainer);
     });
+    // ----------------------------------------------->
   }
 };
 

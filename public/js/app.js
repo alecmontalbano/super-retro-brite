@@ -24,17 +24,15 @@ const App = {
   },
   cacheDOM: function(){
     this.root = document.querySelector(this.rootElement);
-    this.colorButtons = this.root.querySelectorAll('button.color');
+    this.colorPicker = this.root.querySelector('.color-picker');
     this.gridOutput = this.root.querySelector('.grid-output');
   },
   bindEvents: function(){
-    this.colorButtons.forEach(btn => {
-      const newColor = btn.classList[1];
-      btn.addEventListener('click', () => this.setColor(newColor));
-    });
+      this.colorPicker.addEventListener('input', () => this.setColor(this.colorPicker.value));
   },
   setColor: function(newColor){
     this.selectedColor = newColor;
+    console.log(this);
   },
   changeColor: function(rowIndex, colIndex){
     const cell = this.grid[rowIndex][colIndex];

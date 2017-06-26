@@ -14,5 +14,6 @@ Cell.prototype.toHtml = function () {
   div.style.width = `${this.width}px`;
   div.style.border = '0.25px solid black';
   div.style.backgroundColor = this.color;
+
   return div;
 };

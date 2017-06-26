@@ -1,1 +1,58 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Rubik+Mono+One);
 
+body {
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 12px;
+    margin: auto;
+    padding: 0;
+    background: rgba-indigo-light;
+}
+
+header {
+  font-size: 32px;
+  margin: auto;
+  text-align: center;
+}
+
+.grid-options {
+  margin: auto;
+  width: 13%;
+  padding: 10px;
+}
+
+.grid-output{
+  margin: auto;
+  text-align: center;
+  /*border: 3px solid black;*/
+  padding: 10px;
+}
+
+.draw-controls {
+  margin: auto;
+  width: 8%;
+  padding: 0px;
+}
+
+button,
+button:visited,
+button:focus {
+  font-family: "Roboto Slab", sans-serif;
+  text-align: center;
+  color: black;
+  background-color: #eceff1;
+  border: #546e7a;
+  transition: all 1s ease-in;
+}
+
+button:hover {
+  color: white;
+  background-color: #9e9e9e;
+  border: #263238;
+}
+
+button:active {
+  color: white;
+  background-color: #424242;
+  border: black;
+}
+.

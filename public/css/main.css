@@ -2,7 +2,6 @@
 
 body {
     font-family: "Roboto Slab", sans-serif;
-    font-size: 12px;
     margin: auto;
     padding: 0;
     background: rgba-indigo-light;
@@ -40,19 +39,18 @@ button:focus {
   text-align: center;
   color: black;
   background-color: #eceff1;
-  border: #546e7a;
-  transition: all 1s ease-in;
+  transition: all .2s ease-in;
 }
 
 button:hover {
   color: white;
-  background-color: #9e9e9e;
-  border: #263238;
+  background-color: #ffcdd2;
+  /*border: #263238;*/
 }
 
 button:active {
   color: white;
-  background-color: #424242;
-  border: black;
+  background-color: #cb9ca1;
+  /*border: black;*/
 }
 .
